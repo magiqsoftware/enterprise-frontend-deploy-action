@@ -1,0 +1,28 @@
+name: "Sencha App Builder"
+description: "Build the frontend distribution for MAGIQ Frontend apps"
+inputs:
+  sdk-prefix-with-file:
+    description: "Sencha SDK Version"
+    required: true
+  sdk-bucket:
+    description: "where the SDKS are located"
+    required: true
+  build-files:
+    description: "required build files"
+    required: true
+  artifact-bucket:
+    description: "location where the artifacts will be pushed to"
+    required: true
+  artifact-prefix:
+    description: "The prefix location of the bucket"
+    required: true
+  build-folder:
+    description: "what folder do you want the output to be in"
+    default: build
+  environment-build:
+    description: is a production build
+    default: "dev"
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+  post: 'dist/cleanup.js'
