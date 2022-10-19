@@ -2,9 +2,8 @@ import * as core from '@actions/core';
 
 export const cleanup = async () => {
     try {
-        const buildOutputFolder = core.getInput('build-folder');
-        core.notice(`The build artifact is ${buildOutputFolder}`);
-        core.notice(`The build artifact is latest.tgz`);
+        const deployedArtifact = core.getInput('artifact-number');
+        core.notice(`The build that got deployed ${deployedArtifact}`);
     } catch (error) {
         core.setFailed(error.message);
     }
